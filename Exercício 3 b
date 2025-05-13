@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define TAM 4
+
+int main() {
+    int fila[TAM], frente = 0, tras = 0, i;
+    
+    for (i = 0; i < TAM; i++) {
+        fila[tras] = i + 1;
+        tras = (tras + 1) % TAM;
+    }
+    
+    for (i = 0; i < 8; i++) {
+        printf("Imprimindo documento %d\n", fila[frente]);
+        fila[frente] = i + 5;
+        frente = (frente + 1) % TAM;
+        tras = (tras + 1) % TAM;
+        printf("Novo documento %d adicionado à fila\n", i + 5);
+    }
+    
+    return 0;
+}
