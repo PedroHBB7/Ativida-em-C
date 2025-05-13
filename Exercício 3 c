@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define TAM 7
+
+int main() {
+    int fila[TAM], frente = 0, tras = 0;
+    int fila_preferenciais[TAM], fila_normal[TAM];
+    int frente_pref = 0, tras_pref = 0, frente_norm = 0, tras_norm = 0;
+    
+    printf("Digite as idades das %d pessoas:\n", TAM);
+    
+    for (int i = 0; i < TAM; i++) {
+        printf("Pessoa %d: ", i + 1);
+        scanf("%d", &fila[i]);
+    }
+
+    for (int i = 0; i < TAM; i++) {
+        if (fila[i] >= 60) {
+            fila_preferenciais[tras_pref++] = fila[i];
+        } else {
+            fila_normal[tras_norm++] = fila[i];
+        }
+    }
+
+    printf("\nAtendendo pessoas preferenciais:\n");
+    while (frente_pref < tras_pref) {
+        printf("Atendendo pessoa preferencial com %d anos\n", fila_preferenciais[frente_pref++]);
+    }
+
+    printf("\nAtendendo pessoas normais:\n");
+    while (frente_norm < tras_norm) {
+        printf("Atendendo pessoa com %d anos\n", fila_normal[frente_norm++]);
+    }
+
+    return 0;
+}
